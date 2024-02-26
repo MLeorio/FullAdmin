@@ -22,12 +22,12 @@ Route::middleware('alreadyLogged')->group(function(){
 });
 
 Route::middleware('isLogin')->group(function(){
+    
+    Route::get('/home', [HomeController::class, 'home'])->name('home');
+    Route::get('/lost', [HomeController::class, 'lost'])->name('lost');
+    Route::get('/fund', [HomeController::class, 'fund'])->name('fund');
+    Route::get('/info/{annonce}', [HomeController::class, 'info'])->name('info');
+    Route::put('/notice/update/{annonce}', [HomeController::class, 'update'])->name('update');
+    Route::get('/publier/{annonce}', [HomeController::class, 'publish'])->name('publish');
+    Route::get('/terminate/{annonce}', [HomeController::class, 'done'])->name('done');
 });
-
-Route::get('/home', [HomeController::class, 'home'])->name('home');
-Route::get('/lost', [HomeController::class, 'lost'])->name('lost');
-Route::get('/fund', [HomeController::class, 'fund'])->name('fund');
-Route::get('/info/{annonce}', [HomeController::class, 'info'])->name('info');
-Route::put('/notice/update/{annonce}', [HomeController::class, 'update'])->name('update');
-Route::get('/publier/{annonce}', [HomeController::class, 'publish'])->name('publish');
-Route::get('/terminate/{annonce}', [HomeController::class, 'done'])->name('done');

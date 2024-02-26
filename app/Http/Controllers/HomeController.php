@@ -13,6 +13,9 @@ class HomeController extends Controller
      */
     public function home()
     {
+
+        //On fera les comptes des objets perdus, persdus, des annonces en general
+        // aussi du nombre d'installation pour des statistique..(Voir dashboard)
         return view('admin.home');
     }
 

@@ -17,15 +17,15 @@ class AuthController extends Controller
 
     public function loginAct(Request $request)
     {
-        $request->validateWithBag('login', [
+        $request->validate([
             'username' => 'required|string|email',
             'password' => 'required|string|min:6',
         ]);
 
-        $user = User::where('email', $request['ident'])->first();
+        $user = User::where('email', $request['username'])->first();
 
         if ($user) {
-            if (Hash::check($request['mdp'], $user['password'])) {
+            if (Hash::check($request['password'], $user['password'])) {
                 $request->session()->put('user', $user);
                 return redirect()->route('home');
             } else {
